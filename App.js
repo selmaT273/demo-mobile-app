@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import moment from 'moment';
 import { StyleSheet, View, Text, Button, Platform } from 'react-native';
 import * as Calendar from 'expo-calendar';
 
@@ -18,10 +19,9 @@ export default function App() {
 
   async function getEventsForToday() {
     const importantCalendar = calendars.filter(c => c.title === "T.Lasagna ");
-    let currentSecs = Date.now();
-    let currentDate = new Date(currentSecs);
-    let tomorrow = new Date(1638993518000);
-    const events = await Calendar.getEventsAsync([importantCalendar.id], currentDate, tomorrow);
+    const startOfDay = moment().startOf("day").toDate();
+    const endOfDay = moment().endOf("day").toDate();
+    const events = await Calendar.getEventsAsync([importantCalendar.id], startOfDay, endOfDay);
     setEventsForToday(events.map(e => e.title));
     console.log('Here is your important calendar');
     console.log( { eventsForToday });
