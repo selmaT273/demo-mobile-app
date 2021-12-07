@@ -5,7 +5,7 @@ import * as Calendar from 'expo-calendar';
 
 export default function App() {
   const [calendars, setCalendars] = useState();
-  const [eventsForToday, setEventsForToday] = useState();
+  const [eventsForToday, setEventsForToday] = useState([]);
 
   useEffect(() => {
     (async () => {
@@ -29,8 +29,9 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text>Calendar Module Example</Text>
-      <Button title="Create a new calendar" onPress={getEventsForToday} />
+      <Text>Daily Events Example</Text>
+      <Button title="Get Today's Events" onPress={getEventsForToday} />
+      {eventsForToday.map(et => <Text key={et}>{et}</Text>)}
     </View>
   );
 }
