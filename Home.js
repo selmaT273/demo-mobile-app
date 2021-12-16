@@ -3,7 +3,7 @@ import * as Calendar from 'expo-calendar';
 import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 
-export default function Home() {
+export default function Home({navigation}) {
   const [calendars, setCalendars] = useState();
   const [eventsForToday, setEventsForToday] = useState([]);
 
@@ -32,6 +32,8 @@ export default function Home() {
       <Text>Daily Events Example</Text>
       <Button title="Get Today's Events" onPress={getEventsForToday} />
       {eventsForToday.map(et => <Text key={et}>{et}</Text>)}
+      {/* For navigating to a screen that is specific to the previous screen, use push. Otherwise use navigate. Ie. details screen for an item would be .push */}
+      <Button title="Go to Calendar" onPress={() => navigation.navigate('Calendar', {eventsForToday})} />
     </View>
   )
 }

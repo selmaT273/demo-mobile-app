@@ -17,10 +17,3 @@ export default function App() {
     </NavigationContainer>
   );
 }
-
-// async function getDefaultCalendarSource() {
-//   const defaultCalendar = await Calendar.getDefaultCalendarAsync();
-//   return defaultCalendar.source;
-// }
-
-
