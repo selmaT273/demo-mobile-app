@@ -10,7 +10,12 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Tab.Navigator initialRouteName="Home">
+      <Tab.Navigator 
+        initialRouteName="Home"
+        screenOptions={{
+          tabBarActiveTintColor: 'pink',
+        }}
+      >
         <Tab.Screen name="Home" component={HomeScreen} />
         <Tab.Screen name="Calendar" component={CalendarScreen} />
       </Tab.Navigator>
