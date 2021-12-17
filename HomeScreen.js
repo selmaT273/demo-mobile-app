@@ -17,6 +17,12 @@ export default function HomeScreen({navigation}) {
     })();
   }, []);
 
+  useEffect(() => {
+    getEventsForToday();
+  },
+  [calendars],
+  )
+
   async function getEventsForToday() {
     const importantCalendar = calendars.filter(c => c.title === "T.Lasagna ");
     const startOfDay = moment().startOf("day").toDate();
@@ -32,7 +38,6 @@ export default function HomeScreen({navigation}) {
       <Text>Daily Events Example</Text>
       <Button title="Get Today's Events" onPress={getEventsForToday} />
       {eventsForToday.map(et => <Text key={et}>{et}</Text>)}
-      {/* For navigating to a screen that is specific to the previous screen, use push. Otherwise use navigate. Ie. details screen for an item would be .push */}
     </View>
   )
 }

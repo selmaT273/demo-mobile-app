@@ -27,7 +27,16 @@ export default function App() {
             ),
             }}
           />
-        <Tab.Screen name="Calendar" component={CalendarScreen} />
+        <Tab.Screen 
+          name="Calendar" 
+          component={CalendarScreen} 
+          options={{
+            tabBarLabel: 'Calendar',
+            tabBarIcon: ({color, size}) => (
+              <MaterialCommunityIcons name="calendar" color={color} size={size} />
+            ),
+          }}
+        />
       </Tab.Navigator>
     </NavigationContainer>
   );
